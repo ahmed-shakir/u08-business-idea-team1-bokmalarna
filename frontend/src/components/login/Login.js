@@ -35,7 +35,7 @@ export const Login = () => {
 	//Login function
 	const login = async (userData) => {
 		const response = await axios.post(
-			process.env.REACT_APP_API_URL + 'user/login',
+			process.env.REACT_APP_API_URL + '/user/login',
 			userData
 		);
 		if (response.data.token) {

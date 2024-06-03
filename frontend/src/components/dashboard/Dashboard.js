@@ -31,7 +31,7 @@ export const Dashboard = () => {
 	//Get users uploaded books
 	const getBooks = async (id) => {
 		await axios
-			.get(process.env.REACT_APP_API_URL + `book/user/${id}`)
+			.get(process.env.REACT_APP_API_URL + `/book/user/${id}`)
 			.then((res) => {
 				if (res.data) {
 					setBooks(res.data.message);
@@ -42,7 +42,7 @@ export const Dashboard = () => {
 	//Get users borrowed books
 	const borrowedBooks = async (id) => {
 		await axios
-			.get(process.env.REACT_APP_API_URL + `book/borrowed/${id}`)
+			.get(process.env.REACT_APP_API_URL + `/book/borrowed/${id}`)
 			.then((res) => {
 				if (res.data) {
 					setBorrowed(res.data.message);
@@ -72,7 +72,7 @@ export const Dashboard = () => {
 			try {
 				await axios
 					.post(
-						process.env.REACT_APP_API_URL + 'conversations/',
+						process.env.REACT_APP_API_URL + '/conversations/',
 						chatMembers,
 						{
 							headers: { 'Content-Type': 'application/json' },
@@ -90,7 +90,7 @@ export const Dashboard = () => {
 	//Delete user book
 	const deleteBook = async (id) => {
 		await axios
-			.delete(process.env.REACT_APP_API_URL + `book/${id}`)
+			.delete(process.env.REACT_APP_API_URL + `/book/${id}`)
 			.then((res) => {
 				window.location.reload();
 			});

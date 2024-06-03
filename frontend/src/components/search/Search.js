@@ -15,7 +15,7 @@ export const Search = () => {
 		const checkUser = async () => {
 			//User sends its access_token in headers to BE to be decoded.
 			await axios
-				.get(process.env.REACT_APP_API_URL + 'user/protected', {
+				.get(process.env.REACT_APP_API_URL + '/user/protected', {
 					withCredentials: true,
 					headers: {
 						Authorization: `Bearer ${user}`,
@@ -33,7 +33,7 @@ export const Search = () => {
 			if (getUser.city) {
 				axios
 					.get(
-						`${process.env.REACT_APP_API_URL}book/search=${searchTerm}&location=${getUser.city}&genre=${genre}`
+						`${process.env.REACT_APP_API_URL}/book/search=${searchTerm}&location=${getUser.city}&genre=${genre}`
 					)
 					.then((res) => {
 						setBooks(res.data);
@@ -42,7 +42,7 @@ export const Search = () => {
 			}
 		} else {
 			axios
-				.get(`${process.env.REACT_APP_API_URL}book/`)
+				.get(`${process.env.REACT_APP_API_URL}/book/`)
 				.then((res) => setBooks(res.data.book));
 			setintroText('Recommended books for you');
 		}
@@ -50,7 +50,7 @@ export const Search = () => {
 
 	const searchBooks = async () => {
 		const res = await axios.get(
-			`${process.env.REACT_APP_API_URL}book/search=${searchTerm}&location=${location}&genre=${genre}`
+			`${process.env.REACT_APP_API_URL}/book/search=${searchTerm}&location=${location}&genre=${genre}`
 		);
 		setBooks(res.data);
 		setintroText('Search results:');
